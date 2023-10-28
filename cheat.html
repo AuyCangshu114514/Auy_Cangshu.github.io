@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.css" rel="stylesheet" />
+		<style>
+			.video{
+				position: fixed;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%,-50%);
+			}
+		</style>
+	</head>
+	<body>
+		<div class="message" style="position: fixed;right:0%;bottom: 0%;transform: translate(-100% -100%);text-align: right;margin: 0 5px 5px 0;">
+			<p>Provide by Auy_Cangshu</p>
+			<p>XIANG SHI</p>
+		</div>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-icon mui-icon-left-nav mui-pull-left" id='back_to_index'></a>
+			<h1 class="mui-title">激情小电影</h1>
+		</header>
+		<script src="js/mui.js"></script>
+		
+		<div class='video'>
+			<video controls="controls" autoplay loop>
+				<source src="vid/main.mp4" type="video/mp4"  />
+			Your browser does not support the video tag.
+			</video>
+		</div>
+		<script type="text/javascript">
+			mui.init()
+			var back_to_index = document.getElementById('back_to_index')
+			back_to_index.onclick = function(){
+				mui.openWindow('index.html')
+			}
+		</script>
+	</body>
+
+</html>

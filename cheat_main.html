@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.css" rel="stylesheet" />
+		<style>
+			.load{
+				text-align: center;
+				position: fixed;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%,-50%);
+				background-color: grey;
+				padding: 5px;
+				border-radius: 8px;
+				display: block;
+			}
+			#loading{
+				transform: rotate(10deg);
+				color: white;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="message" style="position: fixed;right:0%;bottom: 0%;transform: translate(-100% -100%);text-align: right;margin: 0 5px 5px 0;">
+			<p>Provide by Auy_Cangshu</p>
+			<p>XIANG SHI</p>
+		</div>
+		<script src="js/mui.js"></script>
+		<header class="mui-bar mui-bar-nav">
+			
+			<h1 class="mui-title">激情看片</h1>
+		</header>
+		<div class="mui-content">
+			<div class='load'>
+				<h1 style="color:white">加載中</h1>
+				<h5 style="color:white">精彩馬上呈現……</h5>
+				<span class='mui-icon mui-icon-spinner-cycle mui-spin' id='loading'></span>
+			</div>
+
+		</div>	
+		<script type="text/javascript">
+			mui.init()
+			var img_ = document.getElementById('loading')
+			var num = 10
+			setInterval(function(){
+				img_.style = 'transform: rotate('+ num +'deg);'
+				num = num + 2
+			},1000/60)
+			
+			setTimeout(function(){
+				mui.openWindow('cheat.html')
+				setInterval(function(){
+					mui.openWindow('cheat.html')
+				},4000)
+			},4000)
+			
+		</script>
+	</body>
+
+</html>

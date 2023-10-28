@@ -1,0 +1,159 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.css" rel="stylesheet" />
+		<style>
+			@font-face {
+				font-family: login_font;
+				src: url('fonts/Lambda-Regular.ttf')
+				
+			}
+			.login_ui{
+				
+				width: 70vw;
+				/* height:40vh; */
+				text-align: center;
+				position: fixed;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%,-50%);
+				padding: 10px;
+				margin: 0%;
+				background: url('img/main.png');
+				border-radius: 10px;
+			}
+			.close_img{
+				position: fixed;
+				right: 0%;
+				top: 0%;
+				margin-top: 10px;
+				margin-right: 10px;
+			}
+			.login_woring{
+				text-align: center;
+				position: fixed;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%,-50%);
+				background-color: dimgrey;
+				color: white;
+				display: none;
+				width: 50vw;
+				z-index: 1;
+				border-radius: 6px;
+			}
+			#login_txt{
+				background-image: -webkit-linear-gradient(bottom,gray,transparent);
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				
+			}
+		</style>
+	</head>
+
+	<body>
+		
+		<img src='img/bg.jpg' style="height: 100vh; position: fixed; transform: translate(-20%,0); filter: blur(2px);" id='bg_img'>
+		<div class="message" style="position: fixed;right:0%;bottom: 0%;transform: translate(-100% -100%);text-align: right;margin: 0 5px 5px 0;">
+			<p>Provide by Auy_Cangshu</p>
+			<p>XIANG SHI</p>
+		</div>
+		<script src="js/mui.js"></script>
+		<div class='login_woring'>
+			<h3 id = 'login_woring'>登錄信息失效！</h3>
+		</div>
+		<div class='login_ui'>
+			<h1 align='left' style="color:darkgray; font-family: login_font;font-size: 150%" id='login_txt'>Login | 登錄</h1>
+			<img src="img/close.png" style="width: 40px;" class="close_img">
+			<textarea placeholder="賬號" rows='1' id = 'zhanghao' maxlength="20"></textarea>
+			<textarea placeholder="密碼" rows="1" id = 'password' maxlength="20"></textarea>
+			<h5 style="color:red" class='tip'>未注冊的賬戶將自動為您注冊</h5>
+			<button type="button" class="mui-btn mui-btn-blue mui-btn-outlined" id='open_cheat'>即刻進入</button>
+			
+		</div>
+		<script type="text/javascript">
+			mui.init()
+			var all_bg = ['84227917_p0.png',
+			'104001022_p0_master1200.jpg',
+			'110445272_p0_master1200.jpg',
+			'110480732_p0_master1200.jpg',
+			'110488452_p0_master1200.jpg',
+			'110502620_p0_master1200.jpg',
+			'110505400_p0_master1200.jpg',
+			'110509008_p0_master1200.jpg',
+			'110520804_p0_master1200.jpg',
+			'110521940_p0_master1200.jpg',
+			'110522129_p0_master1200.jpg',
+			'110529902_p3_master1200.jpg',
+			'110531367_p0_master1200.jpg',
+			'110531379_p0.jpg',
+			'110532186_p0.jpg',
+			'110533172_p0_master1200.jpg',
+			'110535570_p0.jpg',
+			'110552219_p0.png',
+			'110564124_p0_master1200.jpg',
+			'bg.jpg']
+			var len = all_bg.length
+			var num = Math.random()*len
+			num = parseInt(num)
+			var img_url = all_bg[num]
+			// console.log(img_url)
+			var html_biaoqian = document.getElementById('bg_img')
+			setInterval(function (){
+				var len = all_bg.length
+				var num = Math.random()*len
+				num = parseInt(num)
+				var img_url = all_bg[num]
+				// console.log(img_url)
+				var html_biaoqian = document.getElementById('bg_img')
+				
+				html_biaoqian.src = 'img/'+ img_url
+			},6000)
+			html_biaoqian.src = 'img/'+ img_url
+			mui('.close_img')[0].addEventListener('tap',function(){
+				mui.openWindow('index.html')
+			})
+			
+			var woring = setTimeout(function(){
+				mui('.login_woring')[0].style = 'display:block;'
+				
+			},800)
+			woring = setTimeout(function(){
+				mui('.login_woring')[0].style = 'display:none;'
+				clearTimeout(woring)
+			},3800)
+			
+			
+		
+			var open_btn = document.getElementById('open_cheat')
+			
+			open_btn.onclick = function(){
+				var zhanghao = document.getElementById('zhanghao')
+				zhanghao = zhanghao.value
+				
+				var password = document.getElementById('password')
+				password = password.value
+				
+				if(zhanghao != '' && password != ''){
+					mui.openWindow('cheat_main.html')
+				}
+				else{
+					// mui('.tip')[0].innerHTML = '請輸入賬號密碼！'
+					var login_woring = document.getElementById('login_woring')
+					login_woring.innerHTML = '請輸入賬號密碼'
+					mui('.login_woring')[0].style = 'display:block;'
+					var woring_set = setTimeout(function(){
+						mui('.login_woring')[0].style = 'display:none;'
+						clearTimeout(woring_set)
+					},2500)
+					
+				}
+			}
+		</script>
+	</body>
+
+</html>

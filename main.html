@@ -1,0 +1,138 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.css" rel="stylesheet" />
+		<style>
+			html{
+				margin: 0 0 0 0;
+			}
+			
+			.main{
+				text-align: center;
+			}
+			.options{
+				text-align: center;
+				margin-top: 15px;
+				margin-left: 7px;
+				margin-right: 7px;
+			}
+			.code{
+				text-align:center;
+				width: 50vw;
+				position: fixed;
+				bottom: 0%;
+				left: 50%;
+				transform: translate(-50%,-50%);
+			}
+		</style>
+	</head>
+	<body>
+		<div class="message" style="position: fixed;right:0%;bottom: 0%;transform: translate(-100% -100%);text-align: right;margin: 0 5px 5px 0;z-index: 1;">
+			<p>Provide by Auy_Cangshu</p>
+			<p>XIANG SHI</p>
+		</div>
+		<!-- head -->
+		<header class="mui-bar mui-bar-nav">
+			<a class=" mui-icon mui-icon-left-nav mui-pull-left" id = 'back_to_index'></a>
+			<h1 class="mui-title">少儿频道</h1>
+		</header>
+		<script src="js/mui.js"></script>
+
+		<!-- body -->
+		<div class="mui-content">
+			<div class='main'>
+			
+			<h1 style="color: gray;">宝宝🚌</h1>
+			<p class='tucao'>Tip</p>
+			</div>
+
+			<div class='options'>
+				<button type="button" class="mui-btn mui-btn-blue" id='hit_btn'>阴游</button>
+				<button type="button" class="mui-btn mui-btn-blue" id='typing'>打字</button>
+				<!-- <button type="button" class="mui-btn mui-btn-blue" id='pumian_maker'>谱面生成器</button> -->
+			</div>
+			<div class = 'code'>
+				<p class='tip'> </p>
+				<textarea class='test_code' id='test_code'rows="1" placeholder="调试码"></textarea>
+				
+			</div>
+			
+			
+			
+			
+		</div>	
+		<!-- script -->	
+		<script type="text/javascript">
+			mui.init()
+			
+			// 吐槽
+			var tucao = ['Tip:lrb是一个大变态（雾',
+			'Tip:你看你（）呢',
+			'Tip:谱面难度各有千秋，因底力制宜（？）',
+			'Tip:!!',
+			'Tip:啊，要给你看什么tip呢（翻',
+			'Tip:啊切，这是一条冷知识',
+			'Tip:这是一条烫烫烫烫烫烫烫烫的热知识',
+			'Tip:猜猜你要刷新几次才能再次看到这条tip?',
+			'Tip:滚出去！！',
+			'Tip:初三党，立刻，给我，滚去学习！',
+			'Tip:莎尼铁塔！',
+			'Tip:莫你穷！',
+			'Tip:1145141919810',
+			'Tip:压力马斯内',
+			'Tip:kksk',
+			'Tip:你知道吗？其实lrb是个变态',
+			]
+			tucao = tucao[parseInt(Math.random()*tucao.length - 1)]
+			mui('.tucao')[0].innerHTML = tucao
+			
+			// 阴游
+			var hit_btn = document.getElementById('hit_btn')
+			hit_btn.onclick = function(){
+				
+				mui.openWindow('music_game/hit_btn_main.html')
+			}
+			
+			var typing = document.getElementById('typing')
+			typing.onclick = function(){
+				mui.openWindow('typing_game/typing_welcome.html')
+			}
+			// 谱面生成器（不开放
+			// var pumian_maker = document.getElementById('pumian_maker')
+			// pumian_maker.onclick = function(){
+				
+			// 	mui.openWindow('music_game/pumian_maker.html')
+			// }
+			
+		
+			// 返回按钮
+			
+			var back_to_index = document.getElementById('back_to_index')
+			back_to_index.onclick = function(){
+				mui.openWindow('index.html')
+			}
+			setInterval(function(){
+				code = mui('.test_code')[0].value
+				if(code == 'pumian_maker'){
+					mui('.test_code')[0].value = ''
+					mui.openWindow('music_game/pumian_maker.html')
+				}
+				else if(code == 'data'){
+					mui('.test_code')[0].value = ''
+					mui.openWindow('data.html')
+				}
+				else{
+					if(code != ''){
+						mui('.tip')[0].innerHTML = '无效的调试码'
+					}
+					else{
+						mui('.tip')[0].innerHTML = ' '
+					}
+				}
+			},1000)
+		</script>
+	</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    
+    <link href="css/mui.min.css" rel="stylesheet"/>
+    <style>
+		/* button{
+			height: 10px;
+			width: 20px;
+		} */
+		.btn{
+			text-align: center;
+		}
+		.sure{
+			width: 50vh;
+			position: fixed;
+			background-image: url('img/main.png');
+			background-size: cover;
+			top:50%;
+			left: 50%;
+			transform: translate(-50%,-50%);
+			border-radius: 10px;
+			line-height: 30px;
+		}
+		/* html{
+			background-image: url('img/bg.jpg');
+			background-position-x: 50%;
+			background-size: cover;
+			height: 100%;
+		} */
+		.black{
+			color:black
+		}
+		#bg_img{
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<img src='img/bg.jpg' style="height: 100vh; position: fixed;" id='bg_img'>
+	<div class="message" style="position: fixed;right:0%;bottom: 0%;transform: translate(-100% -100%);text-align: right;margin: 0 5px 5px 0;">
+		<p>Provide by Auy_Cangshu</p>
+		<p>XIANG SHI</p>
+	</div>
+	<header class="mui-bar mui-bar-nav">
+		<h1 class="mui-title">激情♂四射</h1>
+	</header>
+	
+	<div class="mui-content">
+		<div class='sure'>
+			<h1 align='center' style="color: red;">警告</h1>
+			<h4 align = 'center' style="color:darkslategray">以下内容可能不适合<b class = 'black'>未满18岁</b>的人员观看</h4>
+			<h4 align = 'center' style="color:darkslategray">我们需要确认你的年龄</h4>
+			<div class='btn'>
+				<button type="button" class="mui-btn" id='cencal' >未满18岁</button>
+				<button type="button" class="mui-btn mui-btn-danger " id='sure' >已满18岁</button>
+			</div>
+		</div>
+	
+	</div>
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript" charset="utf-8">
+			mui.init();
+			mui('#sure')[0].addEventListener('tap',function(){
+				mui.openWindow('cheat_login.html')
+			})
+			mui('#cencal')[0].addEventListener('tap',function(){
+				mui.openWindow('main.html')
+			})
+			
+			// 背景轮播
+			var all_bg = ['84227917_p0.png',
+			'104001022_p0_master1200.jpg',
+			'110445272_p0_master1200.jpg',
+			'110480732_p0_master1200.jpg',
+			'110488452_p0_master1200.jpg',
+			'110502620_p0_master1200.jpg',
+			'110505400_p0_master1200.jpg',
+			'110509008_p0_master1200.jpg',
+			'110520804_p0_master1200.jpg',
+			'110521940_p0_master1200.jpg',
+			'110522129_p0_master1200.jpg',
+			'110529902_p3_master1200.jpg',
+			'110531367_p0_master1200.jpg',
+			'110531379_p0.jpg',
+			'110532186_p0.jpg',
+			'110533172_p0_master1200.jpg',
+			'110535570_p0.jpg',
+			'110552219_p0.png',
+			'110564124_p0_master1200.jpg',
+			'bg.jpg']
+			
+			bg_set()
+			function bg_set(){
+				var len = all_bg.length
+				var num = Math.random()*len
+				num = parseInt(num)
+				var img_url = all_bg[num]
+				// console.log(img_url)
+				var html_biaoqian = document.getElementById('bg_img')
+				
+				html_biaoqian.src = 'img/'+ img_url
+			}
+			setInterval(function (){
+				var len = all_bg.length
+				var num = Math.random()*len
+				num = parseInt(num)
+				var img_url = all_bg[num]
+				// console.log(img_url)
+				var html_biaoqian = document.getElementById('bg_img')
+				
+				html_biaoqian.src = 'img/'+ img_url
+			},6000)
+		</script>
+</body>
+</html>
