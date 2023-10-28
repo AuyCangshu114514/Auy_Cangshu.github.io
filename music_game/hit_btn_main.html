@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.css" rel="stylesheet" />
+		<style>
+			.choose_music{
+				display: block;
+				position: fixed;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%,-50%);
+				width: 70vw;
+				height: 60vh;
+				background-color: aquamarine;
+				text-align: center;
+			}
+			.note{
+				position: fixed;
+				color:lightgray;
+				top:50%;
+				left: 50%;
+				transform: translate(-50%,-50%);
+				text-align: center;
+				z-index: 1;
+				width: 100vw;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class='note'>
+			<h1>此项目已停止更新</h1>
+		</div>
+		<div class="message" style="position: fixed;right:0%;bottom: 0%;transform: translate(-100% -100%);text-align: right;margin: 0 5px 5px 0;">
+			<p>Provide by Auy_Cangshu</p>
+			<p>XIANG SHI</p>
+		</div>
+		<script src="../js/mui.js"></script>
+		
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">谱面选择</h1>
+		</header>
+		<div class="mui-content">
+			<div class='choose_music'>
+				
+				<h1>曲目选择</h1>
+				<button id = 'wet_hand'>wet hand</button>
+				<button id = 'sakura'>樱树街道</button>
+				<button id = 'reimei'>Reimei</button>
+				<button id = 'guang'>光</button>
+				<button id = 'shenhua'>神話</button>
+				<button id = 'el'>El último baile</button>
+				<button id = 'clock'>Clock Paradox</button>
+				<button id = 'Chronomia'>Chronomia</button>
+			</div>
+		</div>
+		<script type="text/javascript">
+			mui.init()
+			
+			var wet_hand = document.getElementById('wet_hand')
+			wet_hand.onclick = function(){
+				mui.openWindow('wet_hand.html')
+			}
+			
+			var sakura = document.getElementById('sakura')
+			sakura.onclick = function(){
+				mui.openWindow('sakura.html')
+			}
+			
+			var reimei = document.getElementById('reimei')
+			reimei.onclick = function(){
+				mui.openWindow('reimei.html')
+			}
+			
+			var guang = document.getElementById('guang')
+			guang.onclick = function(){
+				mui.openWindow('guang.html')
+			}
+			
+			var shenhua = document.getElementById('shenhua')
+			shenhua.onclick = function(){
+				mui.openWindow('shenhua.html')
+			}
+			
+			var el = document.getElementById('el')
+			el.onclick = function(){
+				mui.openWindow('el.html')
+			}
+			
+			var clock = document.getElementById('clock')
+			clock.onclick = function(){
+				mui.openWindow('clock.html')
+			}
+			
+			var Chronomia = document.getElementById('Chronomia')
+			Chronomia.onclick = function(){
+				mui.openWindow('Chronomia.html')
+			}
+		</script>
+	</body>
+
+</html>

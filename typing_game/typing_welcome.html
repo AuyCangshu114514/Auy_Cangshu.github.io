@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.css" rel="stylesheet" />
+		<style>
+			@font-face {
+				font-family: lishu;
+				src: url('../fonts/chongxi_seal.otf');
+			}
+			.title_text{
+				font-family: lishu;
+			}
+			.title{
+				margin-top: 20px;
+				text-align: center;
+			}
+			.typing_choose{
+				text-align: center;
+				position: fixed;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%,-50%);
+				margin-top: 10px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="message" style="position: fixed;right:0%;bottom: 0%;transform: translate(-100% -100%);text-align: right;margin: 0 5px 5px 0;">
+			<p>Provide by Auy_Cangshu</p>
+			<p>XIANG SHI</p>
+		</div>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-icon mui-icon-left-nav mui-pull-left" id='back-to-main'></a>
+			<h1 class="mui-title">标题</h1>
+		</header>
+		<script src="../js/mui.js"></script>
+		<div class="mui-content">
+			<div class='title'>
+				<h1 class='title_text'>打字</h1>
+				<p>打 &nbsp;&nbsp;&nbsp; 字</p>
+			</div>
+			<br />
+			<div class='typing_choose'>
+				<button type="button" class="mui-btn mui-btn-blue mui-btn-outlined" id='speed'>竞速模式</button>
+				<p>在此模式下，您的成绩将是您完成规定词库的时间！</p>
+				<button type="button" class="mui-btn mui-btn-blue mui-btn-outlined" id ='time'>计时模式</button>
+				<p>在此模式下，您的成绩将是您在1分钟内完成的单词数！</p>
+			</div>
+			
+			
+			
+			
+			
+			
+			
+			
+		</div>
+
+		<script type="text/javascript">
+			mui.init()
+			var speed = document.getElementById('speed')
+			speed.onclick = function(){
+				mui.openWindow('speed.html')
+			}
+			var time = document.getElementById('time')
+			time.onclick = function(){
+				mui.openWindow('time.html')
+			}
+		</script>
+	</body>
+
+</html>

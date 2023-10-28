@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.css" rel="stylesheet" />
+		<style>
+			.bg{
+				position: fixed;
+				left: 50%;
+				transform: translate(-50%);
+			}
+			.line{
+				background-color: hotpink;
+				
+				width: 70vw;
+				height: 70vh;
+				
+				/* left: 50%;
+				transform: translate(-50%); */
+			}
+			.cheak{
+				background-color: coral;
+				
+				width: 70vw;
+				height: 10vh;
+				
+				/* left: 50%;
+				transform: translate(-50%); */
+			}
+			
+			.block{
+				position: fixed;
+				top: 0vh;
+				left: 15vw;
+				background-color: aqua;
+				width: 30vw;
+				height: 15vw;
+				display: none;
+				z-index: 1;
+			}
+			
+			
+			
+			
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">樱树街道</h1>
+		</header>
+		<div class="mui-content">
+			
+			<div class="bg">
+				<div class="line">
+					
+				</div>
+				<div class="cheak">
+					
+				</div>
+			</div>
+			
+			<div class='block' id="block">
+				
+			</div>
+			
+			
+			
+			
+			
+			
+			
+		</div>
+		<script src="../js/mui.js"></script>
+		
+		
+		<script type="text/javascript">
+			mui.init()
+			var combo = 0
+			dic_low()
+			function dic_low(){
+				var dic = document.getElementById('block')
+				var x = 0//下落x轴
+				var puse = false//判定是否点击
+				var low = setInterval(function(){
+					dic.style = 'display : block; top:' + x + 'vh;'
+					x = x + 0.7
+					if (x >= 80 && puse== false){
+						// miss判定
+					}
+					mui('#block')[0].addEventListener('tap',function(){
+						cheak(x,push,dic,low)
+					})
+						
+					
+				},10)
+			}
+			
+			function cheak(x,push,dic,low){
+				if(x >= 65 && puse == false){
+					// 击打判定
+					combo = combo + 1
+					push = true
+					dic.style = 'display:none;'
+					x = 0
+					clearInterval(low)
+				}
+			}
+			
+			
+			
+			
+		</script>
+	</body>
+
+</html>

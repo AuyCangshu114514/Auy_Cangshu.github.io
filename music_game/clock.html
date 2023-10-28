@@ -1,0 +1,545 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.css" rel="stylesheet" />
+		<style>
+			.help{
+				
+				margin-left: 5%;
+				margin-top: 2%;
+				
+			}
+			.help_img{
+				width: 7vw;
+				/* left: 5%; */
+				
+			}
+			.tip{
+				text-align: center;
+				width: 71vw;
+				background-color: aqua;
+				height: 50vw;
+				position: fixed;
+				left: 50%;
+				top: 50%;
+				transform: translate(-50%,-50%);
+				display: none;
+				z-index: 1;
+				
+			}
+			.game_main{
+				position: fixed;
+				text-align: center;
+				top:50vh;
+				left:50vw;
+				transform: translate(-50%,-50%);
+				width: 100vw;
+				display: none;
+			}
+			
+			/* game UI */
+			.begin{
+				text-align: center;
+				display: none;
+			}
+			.combo{
+				text-align: center;
+				display: none;
+				
+			}
+			.jiesuan{
+				width: 100vw;
+				height: 100vh;
+				background-color: bisque;
+				position: fixed;
+				z-index: 5;
+				display: none;
+				left: 50%;
+				top: 50%;
+				transform: translate(-50%,-50%);
+				text-align: center;
+			}
+			.choose_music{
+				display: none;
+				position: fixed;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%,-50%);
+				width: 70vw;
+				height: 60vh;
+				background-color: aquamarine;
+				text-align: center;
+			}
+			
+			/* 暂停控件 */
+			.puase{
+				position: fixed; 
+				right: 0%;
+				top: 7vh;
+				margin-right: 5px;
+			}
+			.puase_ui{
+				position: fixed;
+				text-align: center;
+				background-color: coral;
+				left: 50%;
+				top: 50%;
+				transform: translate(-50%,-50%);
+				display: none;
+			}
+			/* 复制到此处 */
+			
+			#btn1{
+				width: 20vw;
+				height: 20vh;
+				margin-top: 20px;
+			}
+			#btn2{
+				width: 20vw;
+				height: 20vh;
+				margin-top: 20px;
+			}
+			#btn3{
+				width: 20vw;
+				height: 20vh;
+				margin-top: 20px;
+			}
+			#btn4{
+				width: 20vw;
+				height: 20vh;
+				margin-top: 20px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="message" style="position: fixed;right:0%;bottom: 0%;transform: translate(-100% -100%);text-align: right;margin: 0 5px 5px 0;">
+			<p>Provide by Auy_Cangshu</p>
+			<p>XIANG SHI</p>
+		</div>
+		<script src="../js/mui.js"></script>
+		
+		
+		<header class="mui-bar mui-bar-nav">
+			<a class=" mui-icon mui-icon-left-nav mui-pull-left" id = 'back_to_main'></a>
+			<h1 class="mui-title">按钮击打</h1>
+		</header>
+		<!-- 音频文件 -->
+		<audio src="../vid/Clock Paradox.mp3" id = 'music01' class = 'music'>
+			
+		</audio>
+		<div class="mui-content">
+			
+			<div class='help'>
+				<img class='help_img' src='../img/help.png'>
+				<p>help</p>
+			</div>
+			<button type="button" id="begin_choose">选择曲目</button>
+			<div class='tip'>
+				<h1 align='left'>Tip!</h1>
+				<br>
+				<span>在按钮变色的时候点击它！</span>
+				<br>
+				<span>祝你好运!</span>
+				<br>
+				<br>
+				<p>点击任意区域关闭</p>
+			</div>
+			
+			<!-- game -->
+			<div class='game_main'>
+				<button id = 'btn1'class ='btn1' type="button" class="mui-btn mui-btn-blue mui-btn-outlined">按钮1</button>
+				<button id = 'btn2'class ='btn2'type="button" class="mui-btn mui-btn-blue mui-btn-outlined">按钮2</button>
+				<button id = 'btn3'class ='btn3'type="button" class="mui-btn mui-btn-blue mui-btn-outlined">按钮3</button>
+				<button id = 'btn4'class ='btn4'type="button" class="mui-btn mui-btn-blue mui-btn-outlined">按钮4</button>
+			</div>
+			<!-- 开始按钮 -->
+			<div class="begin">
+				<button id ='begin'>Start</button>
+				<p class='music_message'>Clock Paradox</p>
+			</div>
+			
+			
+			
+			<!-- 选择曲目 模块 -->
+			<!-- <div class='choose_music'>
+				<img src="../img/close.png" class='close_choose'>
+				<h1>曲目选择</h1>
+				<button id = 'wet_hand'>wet hand</button>
+				<button id = 'sakura'>樱树街道</button>
+				<button id = 'el'>El último baile</button>
+			</div> -->
+			
+			
+			
+			
+			<div class='combo'>
+				<h1 class='combo_num'>0</h1>
+				<p class='combo_text'>COMBO</p>
+			</div>
+		</div>
+		<div class='jiesuan'>
+			<br>
+			<br>
+			<br>
+			<h1 class='ninwanchengle'>您完成了!</h1>
+			<br>
+			<h4 align = 'right' class = 'score_100w'>score</h4>
+			<h2 class="combo_text_over">num</h2>
+			<p>COMBO</p>
+			<h1 class="fen">score</h1>
+			<br>
+			<img src="../img/close.png" class = 'again'>
+			<p>再来一次！</p>
+		</div>
+		
+		<!-- 暂停 -->
+		
+		<div class='puase'>
+			<img src='../img/fb_live_look.png' class='puase_btn'>
+		</div>
+		<div class='puase_ui'>
+			<h1>您已暂停！</h1>
+			
+			
+			<img src='../img/gsc_web_container_view_refresh.png' style="width: 10vw;" class = 're_again'>
+		</div>
+		<!-- 复制到此处 -->
+		
+		
+		
+		
+		
+		
+		<!-- JS -->
+		<script type="text/javascript">
+			mui.init()
+			var help = true
+			var combo = 0
+			var score = 0
+			var a = 0
+			var music_01 = document.getElementById('music01')
+			
+			var back_to_main = document.getElementById('back_to_main')
+			back_to_main.onclick = function(){
+				mui.openWindow('../main.html')
+			}
+			
+			// 选择曲目---start
+			game_ui_block()
+			var begin_choose = document.getElementById('begin_choose')
+			begin_choose.onclick = function(){
+				// mui('.choose_music')[0].style='display:block;'
+				mui.openWindow('hit_btn_main.html')
+			}
+			// 选择 wet hand
+			// var wet_hand_c = document.getElementById('wet_hand')
+			// wet_hand_c.onclick = function(){
+			// 	a = 0
+			// }
+			// var sakura_c = document.getElementById('sakura')
+			// sakura_c.onclick = function(){
+			// 	mui.openWindow('sakura.html')
+			// }
+			
+			// mui('.close_choose')[0].addEventListener('tap',function(){
+			// 	mui('.choose_music')[0].style='display:none;'
+			// })
+			// 选择曲目---end
+			
+			// 暂停
+			
+			// 暂停控件（
+			mui('.puase_btn')[0].addEventListener('tap',function(){
+				mui('.puase_ui')[0].style = 'display:block;'
+				music_01.pause()
+			})
+			
+			mui('.re_again')[0].addEventListener('tap',function(){
+				mui('.puase_ui')[0].style = 'display:none;'
+				music_01.load()
+				location.reload()
+			})
+			// 复制到此处（
+			
+			
+			mui('.again')[0].addEventListener('tap',function(){
+				location.reload()
+			})
+			mui('.tip')[0].addEventListener('tap',function(){
+				mui('.tip')[0].style = 'display:none;'
+				game_ui_block()
+				help = false
+			})
+			mui('.help')[0].addEventListener('tap',function(){
+				mui('.tip')[0].style= 'display:block'
+				game_ui_none()
+				help = true
+			})
+			function game_ui_block(){
+				mui('.begin')[0].style='display:block'
+				mui('.combo')[0].style='display:block'
+				mui('.game_main')[0].style='display:block'
+			}
+			function game_ui_none(){
+				mui('.begin')[0].style= 'display:none'
+				mui('.combo')[0].style= 'display:none'
+				mui('.game_main')[0].style= 'display:none'
+			}
+			// 开始按钮
+			var bg_btn = document.getElementById('begin')
+			
+			bg_btn.onclick = function(){
+				bg_btn.style = 'display:none;'
+				var lose_time
+				mui('.combo_num')[0].innerHTML = '3'
+				mui('.combo_text')[0].innerHTML = 'READY'
+				lose_time = setTimeout(function(){
+					mui('.combo_num')[0].innerHTML = '2'
+				},1000)
+				lose_time =setTimeout(function(){
+					mui('.combo_num')[0].innerHTML = '1'
+				},2000)
+				lose_time =setTimeout(function(){
+					mui('.combo_num')[0].innerHTML = '0'
+					mui('.combo_text')[0].innerHTML = 'COMBO'
+				},3000)
+				setTimeout(function(){
+					clearTimeout(lose_time)
+				},3010)
+				setTimeout(function(){
+					game_main()
+					// 加载歌曲
+					
+					music_01.play()
+				},4000)
+				
+				
+				
+				
+			} 
+			var up_btn
+			// 所有谱面文件
+			var all_pumian = [
+				{pumian_unload:[15462,15696,15732,16018,16801,17305,
+				17607,17784,18652,19108,19395,20366,20685,21163,22649,
+				22838,22968,23580,24118,24451,25388,25864,26203,27211,
+				27510,28027,29653,30045,30496,30893,31332,31459,31780,
+				31924,32226,32379,32659,32820,33109,33252,33524,33692,
+				33948,34102,34332,34507,34811,35236,35675,36076,38207,
+				38762,39083,39614,39941,40467,40813,41352,41661,42204,
+				42533,43059,43372,43872,44213,44707,45053,45492,45940,
+				46372,46887,47205,47729,48070,48404,48491,48909,49357,
+				49780,50179,50220,50653,51076,51500,51916,52464,52780,
+				53315,53651,54178,54466,54812,55099,55347,56059,56663,
+				57011,57083,57834,58203,58485,58571,58853,59171,59717,
+				60045,60612,60924,61424,61645,62062,62236,63000,63470,
+				63873,63949,64565,66069,66613,66885,67212,68177,68588,
+				68923,69056,69629,69948,70455,70677,70927,70995,71224,
+				71311,71777,71844,72087,72163,72603,72668,72944,73013,
+				73496,73580,73809,73893,74396,74556,74773,74958,75200,
+				75387,75615,75788,75998,76300,76801,77207,77652,78075,
+				78524,78917,79130,79212,79462,79741,80108,80965,81162,
+				81227,81822,82691,82715,82931,83405,84244,84532,85312,
+				85676,85938,86018,86324,86900,87709,87851,88106,88580,
+				88879,89013,89295,89499,89755,89876,90093,90187,90421,
+				90499,90779,90850,91123,91203,91442,91522,91945,92198,
+				92657,93066,93500,93929,94374,94780,94877,95212,95683,
+				96109,96534,96943,97211,97460,97733,97988,98260,98637,
+				99045,99476,99919,100365,100781,101215,101652,102110,
+				102545,102952,103489,103835,104221,104638,105077,106767,
+				108420,110174,113299,113693,114100,114537,114979,115397,
+				115822,116264,116690,117109,117508,117940,118325,118768,
+				119189,119649,120089,120452,120494,120937,121373,121792,
+				122226,122664,123110,123510,123945,124366,124798,125213,
+				125638,126053,126509,127045,127084,127338,127414,127808,
+				128350,128605,129002,129060,129493,129950,130373,130904,
+				131197,131771,132057,132638,132918,133419,133822,134325,
+				134380,134660,134733,135018,135084,135376,135427,135734,
+				135796,136099,136147,136471,136532,136876,136926,137252,
+				137294,137599,137709,138321,138478,138632,139180,139312,
+				139455,140137,140582,141022,141733,144476,146173,147886]
+				,name:"Clock Paradox",url:"../vid/Clock Paradox.mp3"},
+				
+			
+				
+			]
+			var pumian
+			var color =['red','yellow','green','blue']
+			var up_color
+			// 加载谱面
+			
+			function loading_pumian(a){
+				// console.log(all_pumian[a].name)
+				// console.log(all_pumian[a].pumian_unload)
+				// console.log(all_pumian[a].url)
+				mui('.music_message')[a].innerHTML = all_pumian[a].name
+				pumian = all_pumian[a].pumian_unload
+				mui('.music')[a].src = all_pumian[a].url
+				
+			}
+			
+			
+			
+			function over(score,combo){
+				mui('.jiesuan')[0].style = 'display: block;'
+				mui('.combo_text_over')[0].innerHTML = combo
+				var fen = score / pumian.length 
+				// console.log(fen)
+				
+				if (fen >= 0.96 && fen < 1){
+					mui('.fen')[0].style = 'color:white;'
+					mui('.fen')[0].innerHTML = 'V'
+				}
+				if(fen >= 0.88 && fen < 0.92){
+					mui('.fen')[0].style = 'color:white;'
+					mui('.fen')[0].innerHTML = 'A'
+				}
+				if(fen >= 0.92 && fen < 0.96){
+					mui('.fen')[0].style = 'color:white;'
+					mui('.fen')[0].innerHTML = 'S'
+				}
+				if(fen >= 0.82 && fen < 0.88){
+					mui('.fen')[0].style = 'color:white;'
+					mui('.fen')[0].innerHTML = 'B'
+				}
+				if(fen >= 0.65 && fen < 0.82){
+					mui('.fen')[0].style = 'color:white;'
+					mui('.fen')[0].innerHTML = 'C'
+				}
+				if(fen <= 0.65){
+					mui('.fen')[0].style = 'color:white;'
+					mui('.fen')[0].innerHTML = 'F'
+				}
+				if( fen == 1 && combo == pumian.length){
+					mui('.fen')[0].style = 'color:yellow;'
+					mui('.fen')[0].innerHTML = 'AP'
+				}
+				if(fen == 1 && combo != pumian.length){
+					mui('.fen')[0].style = 'color:blue;'
+					mui('.fen')[0].innerHTML = 'V'
+				}
+				if(fen > 1){
+					mui('.fen')[0].style = 'color:red;'
+					mui('.fen')[0].innerHTML = 'φ'
+					mui('.ninwanchengle')[0].innerHTML = '您作弊了！'
+				}
+				fen = fen * 1000000
+				fen = parseInt(fen)
+				if (fen < 1000000){
+					fen = '0' + fen
+				}
+				mui('.score_100w')[0].innerHTML = fen
+			}
+			
+			
+			function btn_color(){
+				
+				// 选择颜色
+				up_color = Math.random()*3
+				up_color = color[parseInt(up_color)]
+				return up_color
+				// alert(up_btn+up_color) 
+				// [num+color]			
+			}
+			function btn_num(){
+				// 选择按钮
+				up_btn = Math.random()*4 + 1
+				up_btn = parseInt(up_btn)
+				up_btn = '.btn'+up_btn
+				return up_btn
+			}
+			var color_time
+			function game_main(){
+				
+				
+				//解析谱面
+				loading_pumian(a)//调用加载谱面函数
+				var puzi
+				var len = pumian.length
+				
+				
+				
+				for(var i = 0; i < len;i++){
+					// alert(i)
+					color_time = pumian[i]
+					up_color = btn_color()//调用选择按钮颜色
+					up_btn = btn_num()//调用选择按钮几
+						// 应用谱面
+					puzi = setTimeout(function(){
+					mui(btn_num())[0].style = 'background-color: ' + up_color + ';'
+					},color_time-200)
+					
+					
+					on_click(up_btn)//判定点击
+					
+						
+				}	
+				// 游戏分数
+				setTimeout(function(){
+					// console.log('over')
+					over(score,combo)
+				},pumian[pumian.length - 1] + 3000)
+			}
+			var onclick_btn
+			// 点击后颜色消失
+			function on_click(up_btn){
+				// btn1
+				var btn1_hit = document.getElementById('btn1')
+				
+				onclick_btn = '.btn1'
+				btn1_hit.onclick = function(){
+					click_if(btn1_hit)
+					mui('.btn1')[0].style = 'background-color: white;'
+					
+				}
+				// btn2
+				var btn2_hit = document.getElementById('btn2')
+				onclick_btn = '.btn2'
+				
+				btn2_hit.onclick = function(){
+					click_if(btn2_hit)
+					mui('.btn2')[0].style = 'background-color: white;'
+					
+				}
+				// btn3
+				var btn3_hit = document.getElementById('btn3')
+				onclick_btn = '.btn3'
+				
+				btn3_hit.onclick = function(){
+					click_if(btn3_hit)
+					mui('.btn3')[0].style = 'background-color: white;'
+					
+				}
+				// btn4
+				var btn4_hit = document.getElementById('btn4')
+				onclick_btn = '.btn4'
+				
+				btn4_hit.onclick = function(){
+					click_if(btn4_hit)
+					mui('.btn4')[0].style = 'background-color: white;'
+					
+				}
+			}
+			// 判定点击
+			function click_if(btn_name){
+				var click_btn = getComputedStyle(btn_name)['background-color']
+				// console.log(click_btn)
+				if(click_btn != 'rgb(255, 255, 255)'){
+					combo = combo + 1
+					score = score + 1
+					mui('.combo_num')[0].innerHTML = combo
+				}
+				else{
+					combo = 0
+					mui('.combo_num')[0].innerHTML = combo
+				}
+			}
+		</script>
+	</body>
+
+</html>

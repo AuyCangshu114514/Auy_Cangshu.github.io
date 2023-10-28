@@ -1,0 +1,336 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.css" rel="stylesheet" />
+		<style>
+			.mui-content{
+				background-color: transparent;
+			}
+			.ready{
+				text-align: center;
+				/* position: fixed; */
+				z-index: 1;
+				color: mediumslateblue;
+				
+				border-radius: 11px;
+				
+				
+			}
+			.text_area{
+				position: fixed;
+				left: 50%;
+				transform: translate(-50%,0);
+				height: 20vh;
+				width: 90vw;
+				background-color: antiquewhite;
+				text-align: center;
+				color: gray;
+				border-radius: 10px;
+				z-index: 1;
+				/* display: none; */
+			}
+			.input{
+				position: fixed;
+				top: 65%;
+				left: 50%;
+				transform: translate(-50%,-50%);
+				text-align: center;
+				width: 70vw;
+			}
+			.text{
+				position: fixed;
+				top:50%;
+				left: 50%;
+				transform: translate(-50%,-50%);
+				width: 100%;
+				z-index: 1;
+			}
+			.time{
+				position: fixed;
+				right: 2%;
+				top: 8%;
+				color: white;
+				/* transform: translate(-100%,-100%);
+				z-index: 1; */
+			}
+			.begin_btn{
+				display: block;
+			}
+			.finish{
+				position: fixed;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%,-50%);
+				background-color: aquamarine;
+				border-radius: 10px;
+				width: 60vw;
+				height: 30vh;
+				z-index: 1;
+				text-align: center;
+				color: lightcoral;
+				display: none;
+			}
+			.bg_img{
+				position: fixed;
+				height: 100%;
+				z-index: -100;
+				
+				filter: blur(10px);
+			}
+			.puse{
+				position: fixed;
+				top: 10%;
+				left: 0%;
+				z-index: 2;
+				font-size: 100%;
+				margin-left: 10px;
+				background-color: white;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<img class='bg_img' src="../img/110521940_p0_master1200.jpg">
+		<div class="message" style="position: fixed;right:0%;bottom: 0%;transform: translate(-100% -100%);text-align: right;margin: 0 5px 5px 0;">
+			<p>Provide by Auy_Cangshu</p>
+			<p>XIANG SHI</p>
+		</div>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">打字-计时模式</h1>
+		</header>
+		
+		<div class="mui-content">
+			<div class='ready'>
+				<br>
+				<h1 id='ready'>准备</h1>
+				<p>COMBO</p>
+			</div>
+			<br>
+			<div class='text_area'>
+				<div class="text">
+					<h2 id='text'>单词即将在此处呈现</h2>
+				</div>
+				
+			</div>
+			
+			<div class='input'>
+				<div class='begin_btn'>
+					<button id="begin">开始</button>
+				</div>
+				<br>
+				<textarea rows="2" placeholder="在此输入单词" id='input'></textarea>
+			</div>
+			
+			
+	
+			<h1 class='puse' id ='puse'>暂停音乐</h1>
+			
+	
+			<div class='time'>
+				<h3 id='time'>60 s</h3>
+			</div>
+			
+			<div class='finish' id='finish'>
+				<h1>游戏结束</h1>
+				<br>
+				<h2 id='seconds'>您的成绩是个</h2>
+				<br>
+				<img class = 'again'src='../img/gsc_web_container_view_refresh.png' style="width: 20%;"/>
+			</div>
+			
+			
+		</div>
+		
+		<audio src="../vid/guang.mp3" id='bg_music'></audio>
+		
+		<script src="../js/mui.js"></script>
+		<script type="text/javascript">
+			mui.init()
+			var text_all = ['abandon','color','position','script','type','style','transform',
+			'translate','class','width','body','javascript','content','charset'
+			,'link','doctype','name','html','bottom',
+			'align','provide','speed','blue','close','victory',
+			'miss','welcome','typing','video','index','main',
+			'vegetable','form','by','event','cheat','style','builder'
+			,'game','all','python','battlefield','english','window','document',
+			'sunday','summer','winter','regret','check','examine','test','destroy','damage','celebrate','congratulate','long','hang','keep','hold','picnic','hero',
+			'photo','potato','tomato','handkerchief','succeed','explanation','pronounce','pronunciation','agriculture','ancient','anxiety','anxious','industrial','appear','appreciate','accidentally','lose',
+			'practical','downstairs','electricity','encourage','equal','equipment','custom','permit','physicist','poisonous','pilot','population','poverty','practice','possibility','worship','vocabulary']
+			
+			
+			var music_list = ['C418 - Wet Hands.mp3',
+						'Clock Paradox.mp3',
+						'El último baile.mp3',
+						'guang.mp3',
+						'Kankitsu - Chronomia.mp3',
+						'Reimei.mp3',
+						'shenhua.mp3',
+						'yinshujiedao.mp3'
+			]
+			var music = document.getElementById('bg_music')
+			var len = music_list.length
+			var music_name = parseInt(Math.random() * len )
+			music_name = music_list[music_name]
+			music.src = '../vid/'+ music_name 
+			console.log(music_name)
+			
+			// 暂停背景音乐
+			var bg_music = document.getElementById('puse')
+			var bg_pause = true
+			bg_music.addEventListener('tap',function(){
+				if(bg_pause == true){
+					bg_music.innerHTML = '启动音乐'
+					bg_pause = false
+					music.pause()
+				}
+				else{
+					bg_music.innerHTML = '暂停音乐'
+					bg_pause = true
+					music.play()
+				}
+			})
+			
+			
+			
+			var test_text = []
+			function test_fill(){ //词库选词
+				var len = text_all.length
+				
+				for(var i = 0;i <= 500;i++){
+					var len_num = Math.random() * len
+					len_num = parseInt(len_num)
+					var word = text_all[len_num]
+					test_text.push(word)
+					console.log(test_text)
+					}
+			}
+			var time = 60
+			var time_show
+			
+			
+			function timeout(){//定义计时事件
+				var timeout = setInterval(function(){
+					time = time - 1
+					if(time < 10){
+						time_show = '00'+time +'s'
+					}
+					else if(time < 100){
+						time_show = '0' + time + 's'
+					}
+					else{
+						time_show = time + 's'
+					}
+					var time_show_out = document.getElementById('time')
+					time_show_out.innerHTML = time_show
+					// 侦测游戏结束
+					if(time <= 0){
+						
+						clearInterval(timeout)
+						
+					}
+				},1000)	
+			}
+			
+			mui('.again')[0].addEventListener('tap',function(){
+				location.reload()
+			})
+			
+			
+			var begin = document.getElementById('begin')//绑定开始事件
+			begin.onclick = function(){
+				music.play()
+				begin.style = 'display:none;'
+				var timeout = setTimeout(function(){
+				
+					var ready = document.getElementById('ready')
+					ready.innerHTML = '03'
+					
+				},0)
+				timeout = setTimeout(function(){
+					var ready = document.getElementById('ready')
+					ready.innerHTML = '02'
+					
+				},1000)
+				timeout=setTimeout(function(){
+					var ready = document.getElementById('ready')
+					ready.innerHTML = '01'
+					
+				},2000)
+				timeout=setTimeout(function(){
+					var ready = document.getElementById('ready')
+					ready.innerHTML = '00'
+					
+					main()//激活游戏蓝图
+					clearTimeout(timeout)
+				},3000)
+				
+				
+			}
+			
+			function cheak(upword){//绑定输入检查事件
+				var cheak = document.getElementById('input')
+				var cheak_main = setInterval(function(){
+				var	input_msg = cheak.value
+				// console.log(upword)
+					if(input_msg == upword){
+						combo = combo + 1
+						cheak.value = ''
+						var combo_show = document.getElementById('ready')
+						combo_show.innerHTML = combo
+						up_word = get_up_word()
+						cheak()
+					}
+				})
+			}
+			var combo = 0
+			var up_word
+			function get_up_word(){ //选词取词
+				// 遍历选词，开始投送
+				up_word = test_text[combo]
+				var text = document.getElementById('text')
+				text.innerHTML = up_word
+				return up_word
+		
+			}
+			
+			function finish(){
+				var ready = document.getElementById('ready')
+				ready.innerHTML = '完成!'
+				var finish = document.getElementById('finish')
+				finish.style = 'display:block;'
+				var seconds = document.getElementById('seconds')
+				seconds.innerHTML = '您的成绩是' + combo + '个'
+				var input = document.getElementById('input')
+				
+			}
+			
+			var text_show = document.getElementById('text') 
+			
+			function main(){//游戏蓝图
+				test_fill()//开始选词
+				timeout()//计时器启动
+				
+					//获取单个词
+					
+				var cheak_index = setInterval(function(){
+					up_word = get_up_word()
+					cheak(up_word)
+					if(time <= 0){
+						finish()
+						clearInterval(cheak_index)
+						
+					}
+				},10)//检查输入
+					
+				
+				}
+			
+		</script>
+	</body>
+
+</html>

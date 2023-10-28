@@ -1,0 +1,126 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.css" rel="stylesheet" />
+		
+		
+		<style>
+			.mui-content{
+				background-color: transparent;
+			}
+			.title{
+				text-align: center;
+			}
+			#sakura{
+				width: 40vw;
+				height: 15vh;
+				font-size: 20px;
+				background-image: url('img/sakura.jpg');
+				text-align: center;
+				margin-left: 20px;
+				color: black;
+			}
+			#bg_img{
+				position: fixed;
+				top: 0%;
+				left: 0%;
+				z-index: -1;
+				filter: blur(10px);
+			}
+			
+			
+			
+			
+			
+			
+			.choose_btn{
+				position: fixed;
+				right: 0%;
+				bottom: 0%;
+				/* transform: translate(-100%,-100%); */
+				margin-right: 10px;
+				margin-bottom: 10px;
+			}
+			#choose_btn{
+				width: 20vw;
+				height: 20vw;
+				font-size: 40px;
+				/* color: white;
+				background-color: black; */
+				/* font: 1000; */
+			}
+		</style>
+		
+		
+	</head>
+
+	<body>
+		<img id='bg_img' src="img/sakura.jpg">
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">新阴游</h1>
+		</header>
+		<!--  -->
+		<div class="mui-content">
+			<div class = 'title'>
+				<br>
+				<h1>阴游</h1>
+				<p>重置版</p>
+			</div>
+			
+			<div class="music-choose">
+				<button type="button" class="mui-btn " id ='sakura'>樱树街道</button>
+			</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			<div class='choose_btn'>
+				<button type="button" class="mui-btn" id='choose_btn'>
+					<span class='mui-icon mui-icon-forward'></span>
+				</button>
+			</div>
+		
+			
+		</div>
+		<!--  -->
+		<script src="../js/mui.js"></script>
+		<script type="text/javascript">
+			mui.init()
+			// 曲目选择
+			var music = 'sakura'
+			var sakura = document.getElementById('sakura')
+			sakura.onclick = function(){
+				// mui.openWindow('sakura.html')
+				music = 'sakura'
+				var bg_img = document.getElementById('bg_img')
+				bg_img.src = 'img/sakura.jpg'
+			}
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			// 进入
+			var choose_btn = document.getElementById('choose_btn')
+			choose_btn.onclick = function(){
+				if(music=='sakura'){
+					mui.openWindow('sakura.html')
+				}
+			}
+		</script>
+	</body>
+
+</html>

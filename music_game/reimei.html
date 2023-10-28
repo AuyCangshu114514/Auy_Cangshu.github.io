@@ -1,0 +1,544 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.css" rel="stylesheet" />
+		<style>
+			.help{
+				
+				margin-left: 5%;
+				margin-top: 2%;
+				
+			}
+			.help_img{
+				width: 7vw;
+				/* left: 5%; */
+				
+			}
+			.tip{
+				text-align: center;
+				width: 71vw;
+				background-color: aqua;
+				height: 50vw;
+				position: fixed;
+				left: 50%;
+				top: 50%;
+				transform: translate(-50%,-50%);
+				display: none;
+				z-index: 1;
+				
+			}
+			.game_main{
+				position: fixed;
+				text-align: center;
+				top:50vh;
+				left:50vw;
+				transform: translate(-50%,-50%);
+				width: 100vw;
+				display: none;
+			}
+			
+			/* game UI */
+			.begin{
+				text-align: center;
+				display: none;
+			}
+			.combo{
+				text-align: center;
+				display: none;
+				
+			}
+			.jiesuan{
+				width: 100vw;
+				height: 100vh;
+				background-color: bisque;
+				position: fixed;
+				z-index: 5;
+				display: none;
+				left: 50%;
+				top: 50%;
+				transform: translate(-50%,-50%);
+				text-align: center;
+			}
+			.choose_music{
+				display: none;
+				position: fixed;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%,-50%);
+				width: 70vw;
+				height: 60vh;
+				background-color: aquamarine;
+				text-align: center;
+			}
+			
+			#btn1{
+				width: 20vw;
+				height: 20vh;
+				margin-top: 20px;
+			}
+			#btn2{
+				width: 20vw;
+				height: 20vh;
+				margin-top: 20px;
+			}
+			#btn3{
+				width: 20vw;
+				height: 20vh;
+				margin-top: 20px;
+			}
+			#btn4{
+				width: 20vw;
+				height: 20vh;
+				margin-top: 20px;
+			}
+			
+			/* 暂停控件 */
+			.puase{
+				position: fixed; 
+				right: 0%;
+				top: 7vh;
+				margin-right: 5px;
+			}
+			.puase_ui{
+				position: fixed;
+				text-align: center;
+				background-color: coral;
+				left: 50%;
+				top: 50%;
+				transform: translate(-50%,-50%);
+				display: none;
+			}
+			/* 复制到此处 */
+		</style>
+	</head>
+
+	<body>
+		<div class="message" style="position: fixed;right:0%;bottom: 0%;transform: translate(-100% -100%);text-align: right;margin: 0 5px 5px 0;">
+			<p>Provide by Auy_Cangshu</p>
+			<p>XIANG SHI</p>
+		</div>
+		<script src="../js/mui.js"></script>
+		
+		
+		<header class="mui-bar mui-bar-nav">
+			<a class=" mui-icon mui-icon-left-nav mui-pull-left" id = 'back_to_main'></a>
+			<h1 class="mui-title">按钮击打</h1>
+		</header>
+		<!-- 音频文件 -->
+		<audio src="../vid/Reimei.mp3" id = 'music01' class = 'music'>
+			
+		</audio>
+		<div class="mui-content">
+			
+			<div class='help'>
+				<img class='help_img' src='../img/help.png'>
+				<p>help</p>
+			</div>
+			<button type="button" id="begin_choose">选择曲目</button>
+			<div class='tip'>
+				<h1 align='left'>Tip!</h1>
+				<br>
+				<span>在按钮变色的时候点击它！</span>
+				<br>
+				<span>祝你好运!</span>
+				<br>
+				<br>
+				<p>点击任意区域关闭</p>
+			</div>
+			
+			<!-- game -->
+			<div class='game_main'>
+				<button id = 'btn1'class ='btn1' type="button" class="mui-btn mui-btn-blue mui-btn-outlined">按钮1</button>
+				<button id = 'btn2'class ='btn2'type="button" class="mui-btn mui-btn-blue mui-btn-outlined">按钮2</button>
+				<button id = 'btn3'class ='btn3'type="button" class="mui-btn mui-btn-blue mui-btn-outlined">按钮3</button>
+				<button id = 'btn4'class ='btn4'type="button" class="mui-btn mui-btn-blue mui-btn-outlined">按钮4</button>
+			</div>
+			<!-- 开始按钮 -->
+			<div class="begin">
+				<button id ='begin'>Start</button>
+				<p class='music_message'>Reimei</p>
+			</div>
+			
+			
+			
+			<!-- 选择曲目 模块 -->
+			<!-- <div class='choose_music'>
+				<img src="../img/close.png" class='close_choose'>
+				<h1>曲目选择</h1>
+				<button id = 'wet_hand'>wet hand</button>
+				<button id = 'sakura'>樱树街道</button>
+				<button id = 'el'>El último baile</button>
+			</div> -->
+			
+			
+			
+			
+			<div class='combo'>
+				<h1 class='combo_num'>0</h1>
+				<p class='combo_text'>COMBO</p>
+			</div>
+		</div>
+		<div class='jiesuan'>
+			<br>
+			<br>
+			<br>
+			<h1 class='ninwanchengle'>您完成了!</h1>
+			<br>
+			<h4 align = 'right' class = 'score_100w'>score</h4>
+			<h2 class="combo_text_over">num</h2>
+			<p>COMBO</p>
+			<h1 class="fen">score</h1>
+			<br>
+			<img src="../img/close.png" class = 'again'>
+			<p>再来一次！</p>
+		</div>
+		
+		<!-- 暂停 -->
+		
+		<div class='puase'>
+			<img src='../img/fb_live_look.png' class='puase_btn'>
+		</div>
+		<div class='puase_ui'>
+			<h1>您已暂停！</h1>
+			
+			
+			<img src='../img/gsc_web_container_view_refresh.png' style="width: 10vw;" class = 're_again'>
+		</div>
+		<!-- 复制到此处 -->
+		
+		
+		
+		
+		
+		
+		<!-- JS -->
+		<script type="text/javascript">
+			mui.init()
+			var help = true
+			var combo = 0
+			var score = 0
+			var a = 0
+			var music_01 = document.getElementById('music01')
+			
+			var back_to_main = document.getElementById('back_to_main')
+			back_to_main.onclick = function(){
+				mui.openWindow('../main.html')
+			}
+			
+			// 选择曲目---start
+			game_ui_block()
+			var begin_choose = document.getElementById('begin_choose')
+			begin_choose.onclick = function(){
+				// mui('.choose_music')[0].style='display:block;'
+				mui.openWindow('hit_btn_main.html')
+			}
+			// 选择 wet hand
+			// var wet_hand_c = document.getElementById('wet_hand')
+			// wet_hand_c.onclick = function(){
+			// 	a = 0
+			// }
+			// var sakura_c = document.getElementById('sakura')
+			// sakura_c.onclick = function(){
+			// 	mui.openWindow('sakura.html')
+			// }
+			
+			// mui('.close_choose')[0].addEventListener('tap',function(){
+			// 	mui('.choose_music')[0].style='display:none;'
+			// })
+			// 选择曲目---end
+			
+			// 暂停
+			
+			// 暂停控件（
+			mui('.puase_btn')[0].addEventListener('tap',function(){
+				mui('.puase_ui')[0].style = 'display:block;'
+				music_01.pause()
+			})
+			
+			mui('.re_again')[0].addEventListener('tap',function(){
+				mui('.puase_ui')[0].style = 'display:none;'
+				music_01.load()
+				location.reload()
+			})
+			// 复制到此处（
+			
+			
+			mui('.again')[0].addEventListener('tap',function(){
+				location.reload()
+			})
+			mui('.tip')[0].addEventListener('tap',function(){
+				mui('.tip')[0].style = 'display:none;'
+				game_ui_block()
+				help = false
+			})
+			mui('.help')[0].addEventListener('tap',function(){
+				mui('.tip')[0].style= 'display:block'
+				game_ui_none()
+				help = true
+			})
+			function game_ui_block(){
+				mui('.begin')[0].style='display:block'
+				mui('.combo')[0].style='display:block'
+				mui('.game_main')[0].style='display:block'
+			}
+			function game_ui_none(){
+				mui('.begin')[0].style= 'display:none'
+				mui('.combo')[0].style= 'display:none'
+				mui('.game_main')[0].style= 'display:none'
+			}
+			// 开始按钮
+			var bg_btn = document.getElementById('begin')
+			
+			bg_btn.onclick = function(){
+				bg_btn.style = 'display:none;'
+				var lose_time
+				mui('.combo_num')[0].innerHTML = '3'
+				mui('.combo_text')[0].innerHTML = 'READY'
+				lose_time = setTimeout(function(){
+					mui('.combo_num')[0].innerHTML = '2'
+				},1000)
+				lose_time =setTimeout(function(){
+					mui('.combo_num')[0].innerHTML = '1'
+				},2000)
+				lose_time =setTimeout(function(){
+					mui('.combo_num')[0].innerHTML = '0'
+					mui('.combo_text')[0].innerHTML = 'COMBO'
+				},3000)
+				setTimeout(function(){
+					clearTimeout(lose_time)
+				},3010)
+				setTimeout(function(){
+					game_main()
+					// 加载歌曲
+					
+					music_01.play()
+				},4000)
+				
+				
+				
+				
+			} 
+			var up_btn
+			// 所有谱面文件
+			var all_pumian = [
+				{pumian_unload:[3110,3223,3459,3471,3919,3950,4257,4465,4722,4792,5060,
+				5097,5375,5416,5703,5824,6077,6143,6591,6639,6939,7423,8205,8391,8620,
+				8720,9153,9216,9497,9714,9954,10047,10299,10359,10595,10655,11075,11142,
+				11397,11599,11857,11979,12746,13280,13667,13734,14006,14183,14450,14543,
+				14980,15047,15337,15383,15685,15703,16043,16176,16467,16545,16981,17024,
+				17379,17515,17769,17815,18081,18129,18377,18438,18867,18913,19235,19408,
+				19665,19734,20163,20207,20519,20550,20845,20873,21183,21352,21621,21687,
+				22096,22134,22427,22597,22793,22856,23125,23158,23443,23623,24159,24600,
+				26177,27130,27375,27423,27832,28143,28689,28875,29086,29127,29423,29446,
+				29758,29775,30072,30433,30463,30741,30808,31460,31895,31977,32446,32487,
+				32747,32782,33233,33376,33908,34030,34827,34903,36737,36767,36950,37162,
+				37191,37443,38033,38054,38263,38286,38487,38543,38759,39339,39552,39992,
+				40207,40596,40992,41877,41968,42219,42327,42711,42769,42966,43087,43345,
+				43634,43859,43929,44187,44252,44520,47008,47738,47825,48035,48104,48337,
+				48399,48665,48719,48947,48998,49265,49295,49569,49875,50358,50568,50957,
+				51130,51305,51392,51582,52176,52586,52808,53176,53255,53518,53575,53818,
+				53871,54107,54151,54355,54431,54865,55039,55283,55367,55596,55664,55909,
+				55961,56221,56271,56525,56575,56841,57141,57507,57534,57783,57807,58083,
+				58110,58563,58591,58859,58903,59121,59174,59429,59622,59887,59942,60209,
+				60263,60522,60570,60831,60876,61122,61158,61421,61591,61929,62215,62718,
+				62894,63357,63539,64004,64207,64533,64592,64835,64876,65127,65197,66521,
+				67804,68770,69021,69086,70016,70273,70343,70779,70799,71089,71271,71775,
+				72647,72890,72965,73472,73903,74234,74823,75331,75358,75653,76032,76589,
+				76774,77237,77456,77949,77982,78317,78768,79528,79727,80147,80336,80829,
+				82009,83208,85568,85838,85863,86101,86627,86964,86975,87509,87671,88265,
+				88518,88737,88766,89019,89080,89339,89366,89651,89707,89987,90007,90305,
+				90374,90639,91116,91537,91557,92025,92026,92313,92358,92655,92759,93269,
+				93423,93915,94230,94839,96297,97191,97246,97558,97799,98296,98510,98987,
+				98999,99228,99239,99481,99527,99809,99846,100111,100165,100468,100485,
+				100771,100814,101645,101792,102087,102176,102435,102496,102772,102816,
+				103269,103448,103994,104118,104775,105007,106794,106854,107025,107031,
+				107283,107370,108089,108174,108347,108358,108645,108703,109375,109568,
+				110024,110223,110659,111024,111971,112062,112265,112350,112767,112798,
+				113067,113104,113341,113599,113829,113904,114143,114199,114501,137810,
+				138236,138254,138573,138729,139043,139070,139548,139587,139885,139911,
+				140236,140251,140603,140736,141052,141103,141523,141543,141882,141990,
+				142286,142321,142604,142633,142957]
+				,name:"Reimei",url:"../vid/Reimei.mp3"},
+				
+			
+				
+			]
+			var pumian
+			var color =['red','yellow','green','blue']
+			var up_color
+			// 加载谱面
+			
+			function loading_pumian(a){
+				// console.log(all_pumian[a].name)
+				// console.log(all_pumian[a].pumian_unload)
+				// console.log(all_pumian[a].url)
+				mui('.music_message')[a].innerHTML = all_pumian[a].name
+				pumian = all_pumian[a].pumian_unload
+				mui('.music')[a].src = all_pumian[a].url
+				
+			}
+			
+			
+			
+			function over(score,combo){
+				mui('.jiesuan')[0].style = 'display: block;'
+				mui('.combo_text_over')[0].innerHTML = combo
+				var fen = score / pumian.length 
+				// console.log(fen)
+				
+				if (fen >= 0.96 && fen < 1){
+					mui('.fen')[0].style = 'color:white;'
+					mui('.fen')[0].innerHTML = 'V'
+				}
+				if(fen >= 0.88 && fen < 0.92){
+					mui('.fen')[0].style = 'color:white;'
+					mui('.fen')[0].innerHTML = 'A'
+				}
+				if(fen >= 0.92 && fen < 0.96){
+					mui('.fen')[0].style = 'color:white;'
+					mui('.fen')[0].innerHTML = 'S'
+				}
+				if(fen >= 0.82 && fen < 0.88){
+					mui('.fen')[0].style = 'color:white;'
+					mui('.fen')[0].innerHTML = 'B'
+				}
+				if(fen >= 0.65 && fen < 0.82){
+					mui('.fen')[0].style = 'color:white;'
+					mui('.fen')[0].innerHTML = 'C'
+				}
+				if(fen <= 0.65){
+					mui('.fen')[0].style = 'color:white;'
+					mui('.fen')[0].innerHTML = 'F'
+				}
+				if( fen == 1 && combo == pumian.length){
+					mui('.fen')[0].style = 'color:yellow;'
+					mui('.fen')[0].innerHTML = 'AP'
+				}
+				if(fen == 1 && combo != pumian.length){
+					mui('.fen')[0].style = 'color:blue;'
+					mui('.fen')[0].innerHTML = 'V'
+				}
+				if(fen > 1){
+					mui('.fen')[0].style = 'color:red;'
+					mui('.fen')[0].innerHTML = 'φ'
+					mui('.ninwanchengle')[0].innerHTML = '您作弊了！'
+				}
+				fen = fen * 1000000
+				fen = parseInt(fen)
+				if (fen < 1000000){
+					fen = '0' + fen
+				}
+				mui('.score_100w')[0].innerHTML = fen
+			}
+			
+			
+			function btn_color(){
+				
+				// 选择颜色
+				up_color = Math.random()*3
+				up_color = color[parseInt(up_color)]
+				return up_color
+				// alert(up_btn+up_color) 
+				// [num+color]			
+			}
+			function btn_num(){
+				// 选择按钮
+				up_btn = Math.random()*4 + 1
+				up_btn = parseInt(up_btn)
+				up_btn = '.btn'+up_btn
+				return up_btn
+			}
+			var color_time
+			function game_main(){
+				
+				
+				//解析谱面
+				loading_pumian(a)//调用加载谱面函数
+				var puzi
+				var len = pumian.length
+				
+				
+				
+				for(var i = 0; i < len;i++){
+					// alert(i)
+					color_time = pumian[i]
+					up_color = btn_color()//调用选择按钮颜色
+					up_btn = btn_num()//调用选择按钮几
+						// 应用谱面
+					puzi = setTimeout(function(){
+					mui(btn_num())[0].style = 'background-color: ' + up_color + ';'
+					},color_time-200)
+					
+					
+					on_click(up_btn)//判定点击
+					
+						
+				}	
+				// 游戏分数
+				setTimeout(function(){
+					// console.log('over')
+					over(score,combo)
+				},pumian[pumian.length - 1] + 3000)
+			}
+			var onclick_btn
+			// 点击后颜色消失
+			function on_click(up_btn){
+				// btn1
+				var btn1_hit = document.getElementById('btn1')
+				
+				onclick_btn = '.btn1'
+				btn1_hit.onclick = function(){
+					click_if(btn1_hit)
+					mui('.btn1')[0].style = 'background-color: white;'
+					
+				}
+				// btn2
+				var btn2_hit = document.getElementById('btn2')
+				onclick_btn = '.btn2'
+				
+				btn2_hit.onclick = function(){
+					click_if(btn2_hit)
+					mui('.btn2')[0].style = 'background-color: white;'
+					
+				}
+				// btn3
+				var btn3_hit = document.getElementById('btn3')
+				onclick_btn = '.btn3'
+				
+				btn3_hit.onclick = function(){
+					click_if(btn3_hit)
+					mui('.btn3')[0].style = 'background-color: white;'
+					
+				}
+				// btn4
+				var btn4_hit = document.getElementById('btn4')
+				onclick_btn = '.btn4'
+				
+				btn4_hit.onclick = function(){
+					click_if(btn4_hit)
+					mui('.btn4')[0].style = 'background-color: white;'
+					
+				}
+			}
+			// 判定点击
+			function click_if(btn_name){
+				var click_btn = getComputedStyle(btn_name)['background-color']
+				// console.log(click_btn)
+				if(click_btn != 'rgb(255, 255, 255)'){
+					combo = combo + 1
+					score = score + 1
+					mui('.combo_num')[0].innerHTML = combo
+				}
+				else{
+					combo = 0
+					mui('.combo_num')[0].innerHTML = combo
+				}
+			}
+		</script>
+	</body>
+
+</html>
